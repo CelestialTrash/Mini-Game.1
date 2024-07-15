@@ -38,18 +38,50 @@ body {
     border: solid black 2px;
     background-color: rgb(72, 72, 72);
     position: relative;
+    
 }
+
+
+ /* Player */
+
 
 #player {
     width: 2.2em;
     height: 2.2em;
-    border: solid white 2px;
+    border: solid rgb(255, 157, 157) 2px;
     position: absolute;  
-    background-color: aliceblue;
+    background-color: rgb(120, 255, 212);
     background-size: contain;
     background-repeat: no-repeat;
     
     
 }
+
+.lantern {
+    width: 8.2em;
+    height: 8.2em;
+    border-radius: 50%;
+    border: 1px solid white;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    
+}
+
+
+
+/* NURSES  */
+
+.nurses {
+    width: 2.2em;
+    height: 2.2em;
+    border: solid rgb(0, 0, 0) 2px;
+    position: absolute;  
+    background-color: rgb(255, 11, 11);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+
+
 
 
