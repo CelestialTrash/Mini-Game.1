@@ -144,6 +144,11 @@ console.log("helloWorld")
 
 
 
+[Deployed Version] (https://celestialtrash.github.io/Mini-Game.1/)
+
+
+
+
 
 
 

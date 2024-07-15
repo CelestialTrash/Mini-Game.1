@@ -8,3 +8,48 @@
 html {
     background-image: url();
 }
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+#game-area-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+
+    
+}
+
+
+#game-area {
+    width: 85%;
+    height: 85%;
+    border: solid black 2px;
+    background-color: rgb(72, 72, 72);
+    position: relative;
+}
+
+#player {
+    width: 2.2em;
+    height: 2.2em;
+    border: solid white 2px;
+    position: absolute;  
+    background-color: aliceblue;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    
+}
+
+
