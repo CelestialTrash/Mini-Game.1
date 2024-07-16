@@ -1,13 +1,16 @@
 // PLAYER
+const livesElement = document.querySelector("#live-section-container")
 const player = {
     positionX: 0,
     positionY: 0,
     velocity: 40,
     directions: [],
     lightOn: false,
+    lives: 10,
     element: document.querySelector("#player"), // Why the element : ????
     container: document.querySelector("#game-area"),
     move() {
+        this.checkCollision();
         const direction = this.directions.join("")
         console.log(this.directions);
         switch (direction) {
@@ -61,6 +64,7 @@ const player = {
             this.move();
         }
     },
+    
     setBoundaries() {
 
         if (this.positionX <= 0) {
@@ -80,6 +84,52 @@ const player = {
         }
     },
 
+    checkCollision() {
+        nurses.forEach((nurse) => {
+            const playerLeftEdge = this.positionX;
+            const playerRightEdge = this.positionX + this.element.offsetWidth;
+            const playerTopEdge = this.positionY;
+            const playerBottomEdge = this.positionY + this.element.offsetHeight;
+
+            const nurseLeftEdge = nurse.positionX;
+            const nurseRightEdge = nurse.positionX + nurse.element.offsetWidth;
+            const nurseTopEdge = nurse.positionY;
+            const nurseBottomEdge = nurse.positionY + nurse.element.offsetHeight;
+
+            if (
+                playerLeftEdge < nurseRightEdge &&
+                playerRightEdge > nurseLeftEdge &&
+                playerTopEdge < nurseBottomEdge &&
+                playerBottomEdge > nurseTopEdge
+            ) {
+                console.log("Collision detected");
+                shakeGameArea();
+                this.lives --;
+                livesElement.textContent = this.lives;
+
+            
+                if (this.lives <= 0) {
+                    game.isGameover = true;
+                    this.endGame();
+                }
+
+
+            
+            }
+
+            
+        });
+
+        
+
+        
+    },
+
+    
+
+
+
+
     turnLightOn() {
 
 
@@ -98,7 +148,26 @@ const player = {
             this.lightOn = false;
             this.lightElement.remove();
         }
-    }
+    },
+
+    endGame (){
+        console.log("Game Over");
+        this.element.style.display = "none";
+        if (this.lightOn === true){
+        this.lightElement.style.display = "none";}
+
+        
+    
+    },
+
+
+    
+
+
+    
+
+
+
 }
 
 

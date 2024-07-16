@@ -1,18 +1,36 @@
 console.log("INDEX JS RUNNING");
 //LISTEN WHEN YOU PRESS THE KEY
-document.addEventListener("keydown", (event) => {
-  if (event.key === " "){
-    player.turnLightOn ();
-  }
+
+const game = {
+  isGameover: false,
+}
 
 
+
+
+
+
+const keyDownEvent = document.addEventListener("keydown", (event) => {
+  if (!game.isGameover) {
+    if (event.key === " ") {
+      player.turnLightOn();
+    }
+
+    console.log("the event happen");
 
     player.setDirection(event.key);
+
+  }
 })
 
 // LISTEN WHEN YOU RELEASE THE KEY
-document.addEventListener("keyup", (event) => {
+const keyUpEvent = document.addEventListener("keyup", (event) => {
+  if (!game.isGameover) {
     player.unSetDirections(event.key);
+
+    console.log("the event happen too");
+
+  }
 });
 
 
@@ -24,8 +42,19 @@ console.table({
 
 
 
+
+
+function shakeGameArea() {
+  gameArea.style.animation = "shake 300ms";
+  setTimeout(() => {
+    gameArea.style.animation = "";
+  }, 300);
+}
+
+
+
 function startGame() {
-  const numberOfNurses= 15;
+  const numberOfNurses = 15;
   const nurseVelocity = 10;
 
   for (let i = 0; i < numberOfNurses; i++) {
@@ -35,7 +64,14 @@ function startGame() {
 
 }
 
+
 startGame();
+
+
+
+
+
+
 
 
 
