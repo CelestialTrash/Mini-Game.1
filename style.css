@@ -28,6 +28,7 @@ body {
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
+    background-image: url(./Assets/Images/background\ 3\ test.webp);
 
     
 }
@@ -58,6 +59,13 @@ body {
     background-color: rgb(72, 72, 72);
     position: relative;
     margin-right: 70px;
+    /* background-image: url(./Assets/Images/Game-Room-2..webp); */
+    clip-path: circle(100% at 50% 50%); /* Initial clip-path value */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
     
 }
 
@@ -79,6 +87,8 @@ body {
     background-repeat: no-repeat;
     left:0;
     top: 0;
+    z-index: 2;
+    
     
     
 }
@@ -87,9 +97,14 @@ body {
     width: 20.2em;
     height: 20.2em;
     border-radius: 50%;
-    border: 1px solid white;
+    background: yellow;
     position: absolute;
     transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 30%;
+    clip-path: circle(100% at 50% 50%); /* Initial clip-path value */
+    
+
     
 }
 
@@ -124,9 +139,60 @@ body {
     background-color: rgb(255, 11, 11);
     background-size: contain;
     background-repeat: no-repeat;
+
+    
+}
+
+/* DOOR TO WIN */
+
+
+
+.escape-door {
+    width: 2.2em;
+    height: 2.2em;
+
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    display: flex;
+
     
 }
 
 
 
 
+#dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    pointer-events: none; /* Allow interactions with elements below */
+    z-index: 1; /* Ensure it is above other elements but below the player */
+    mix-blend-mode: multiply; /* Blend the darkness with the background */
+    opacity: 90%;
+    
+    
+}
+
+
+
+
+/* GAME OVER SECTION  */
+
+#game-over-section {
+    width:70vw ;
+    height:70vh ;
+    background-color: rgba(255, 0, 0, 0);
+    border: solid rgba(255, 255, 255, 0) 1px ;
+    z-index: 3;
+    font-size: 200px;
+    font-family:"Mina";
+    color: rgb(183, 11, 11);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+}

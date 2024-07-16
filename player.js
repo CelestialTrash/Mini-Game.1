@@ -1,5 +1,7 @@
 // PLAYER
 const livesElement = document.querySelector("#live-section-container")
+const darkOverlay = document.querySelector("#dark-overlay");
+const gameOverElement = document.querySelector("#game-over-section")
 const player = {
     positionX: 0,
     positionY: 0,
@@ -11,6 +13,7 @@ const player = {
     container: document.querySelector("#game-area"),
     move() {
         this.checkCollision();
+        
         const direction = this.directions.join("")
         console.log(this.directions);
         switch (direction) {
@@ -40,6 +43,7 @@ const player = {
         this.setBoundaries();
         this.element.style.top = `${this.positionY}px`;
         this.element.style.left = `${this.positionX}px`;
+        /* this.updateDarkOverlay(); */
         if (this.lightOn === true){
         this.lightElement.style.top = `${this.positionY + (this.element.offsetHeight / 2)}px`;
         this.lightElement.style.left = `${this.positionX + (this.element.offsetWidth / 2)}px`;
@@ -111,6 +115,7 @@ const player = {
                 if (this.lives <= 0) {
                     game.isGameover = true;
                     this.endGame();
+                    gameOverElement.style.display = "flex";  
                 }
 
 
@@ -120,7 +125,32 @@ const player = {
             
         });
 
-        
+        doorArray.forEach((door) => {
+            const playerLeftEdge = this.positionX;
+            const playerRightEdge = this.positionX + this.element.offsetWidth;
+            const playerTopEdge = this.positionY;
+            const playerBottomEdge = this.positionY + this.element.offsetHeight;
+
+            const doorLeftEdge = door.positionX;
+            const doorRightEdge = door.positionX + door.element.offsetWidth;
+            const doorTopEdge = door.positionY;
+            const doorBottomEdge = door.positionY + door.element.offsetHeight;
+
+            
+
+            if (
+                playerLeftEdge < doorRightEdge &&
+                playerRightEdge > doorLeftEdge &&
+                playerTopEdge < doorBottomEdge &&
+                playerBottomEdge > doorTopEdge
+            ) {
+                console.log("You Win!!");
+                this.endGame();
+
+            }
+
+            
+        });
 
         
     },
@@ -141,7 +171,8 @@ const player = {
             gameArea.appendChild(this.lightElement);
             this.lightElement.style.top = `${this.positionY + (this.element.offsetHeight / 2)}px`;
             this.lightElement.style.left = `${this.positionX + (this.element.offsetWidth / 2)}px`;
-
+           /*  darkOverlay.style.clipPath = `circle(0px at ${this.positionX + (this.element.offsetWidth / 2)}px ${this.positionY + (this.element.offsetHeight / 2)}px)`;
+ */
         }
 
         else {
@@ -149,6 +180,15 @@ const player = {
             this.lightElement.remove();
         }
     },
+
+    /* updateDarkOverlay() {
+        const centerX = this.positionX + this.element.offsetWidth / 2;
+        const centerY = this.positionY + this.element.offsetHeight / 2;
+        darkOverlay.style.clipPath = `circle(100px at ${centerX}px ${centerY}px)`; // Adjust the radius as needed
+    }, */
+
+   
+
 
     endGame (){
         console.log("Game Over");

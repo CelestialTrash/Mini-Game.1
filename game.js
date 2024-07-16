@@ -9,17 +9,16 @@ const game = {
 
 
 
-
 const keyDownEvent = document.addEventListener("keydown", (event) => {
   if (!game.isGameover) {
     if (event.key === " ") {
       player.turnLightOn();
     }
-
-    console.log("the event happen");
-
+    
+    
+    
     player.setDirection(event.key);
-
+    
   }
 })
 
@@ -27,9 +26,9 @@ const keyDownEvent = document.addEventListener("keydown", (event) => {
 const keyUpEvent = document.addEventListener("keyup", (event) => {
   if (!game.isGameover) {
     player.unSetDirections(event.key);
-
-    console.log("the event happen too");
-
+    
+    
+    
   }
 });
 
@@ -54,22 +53,46 @@ function shakeGameArea() {
 
 
 function startGame() {
-  const numberOfNurses = 15;
+  const numberOfNurses = 40;
   const nurseVelocity = 10;
-
+  
   for (let i = 0; i < numberOfNurses; i++) {
     const nurse = new Nurse(nurseVelocity);
     nurses.push(nurse)
   };
-
+  
 }
 
 
 startGame();
 
 
+const doorArray = []
 
+class Door {
+  constructor() {
+    this.createDoorElement();
+    this.positionX = gameArea.offsetWidth - this.element.offsetWidth -10; 
+    this.positionY = gameArea.offsetHeight - this.element.offsetHeight - 40; 
+    this.updateElementPosition();
+    doorArray.push(this);
+  }
 
+  createDoorElement() {
+    console.log("The Door was Created");
+    this.element = document.createElement("div");
+    this.element.className = "escape-door";
+    gameArea.appendChild(this.element);
+  }
+
+  updateElementPosition() {
+    this.element.style.left = `${this.positionX}px`;
+    this.element.style.top = `${this.positionY}px`;
+  }
+}
+
+// Create the door when starting the game
+const door = new Door();
 
 
 

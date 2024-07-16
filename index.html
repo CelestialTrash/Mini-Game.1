@@ -5,16 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 
 <body>
+   <!--  <audio class="ambient-sound1" src="./Assets/Sound/Ambient/StrangeWind_BW.13120.wav" autoplay loop></audio> -->
     <section id="game-area-container">
         <section id="live-section-container"></section>
         <div id="game-area">
-            
+            <section id="game-over-section">You Died</section>
+            <div id="dark-overlay"></div> <!-- Dark overlay element -->
             <div id="player"></div>
-            
         </div>
     </section>
     <script src="./enemies.js"> </script>
