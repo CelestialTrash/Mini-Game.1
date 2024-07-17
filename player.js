@@ -2,6 +2,7 @@
 const livesElement = document.querySelector("#live-section-container")
 const darkOverlay = document.querySelector("#dark-overlay");
 const gameOverElement = document.querySelector("#game-over-section")
+const winElement = document.querySelector("#win-section")
 const player = {
     positionX: 0,
     positionY: 0,
@@ -47,7 +48,10 @@ const player = {
         if (this.lightOn === true){
         this.lightElement.style.top = `${this.positionY + (this.element.offsetHeight / 2)}px`;
         this.lightElement.style.left = `${this.positionX + (this.element.offsetWidth / 2)}px`;
+        darkOverlay.style.maskImage = `radial-gradient(circle at ${this.positionX + (this.element.offsetWidth / 2)}px ${this.positionY + (this.element.offsetHeight / 2)}px, transparent 100px, black 160px)`;
         }
+        else(darkOverlay.style.maskImage = "none")
+        this.updateNursesChasing();
 
 
 
@@ -146,6 +150,9 @@ const player = {
             ) {
                 console.log("You Win!!");
                 this.endGame();
+                winElement.style.display = "flex";
+
+
 
             }
 
@@ -181,6 +188,20 @@ const player = {
         }
     },
 
+    updateNursesChasing() {
+        const centerX = this.positionX + this.element.offsetWidth / 2;
+        const centerY = this.positionY + this.element.offsetHeight / 2;
+        const radius = 100; // The radius of the light
+
+        nurses.forEach((nurse) => {
+            if (this.lightOn && nurse.checkInLightRadius(centerX, centerY, radius)) {
+                nurse.chasingPlayer = true;
+            } else {
+                nurse.chasingPlayer = false;
+            }
+            nurse.move();
+        });
+    },
     /* updateDarkOverlay() {
         const centerX = this.positionX + this.element.offsetWidth / 2;
         const centerY = this.positionY + this.element.offsetHeight / 2;

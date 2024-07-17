@@ -53,8 +53,8 @@ function shakeGameArea() {
 
 
 function startGame() {
-  const numberOfNurses = 40;
-  const nurseVelocity = 10;
+  const numberOfNurses = 20;
+  const nurseVelocity = 15;
   
   for (let i = 0; i < numberOfNurses; i++) {
     const nurse = new Nurse(nurseVelocity);

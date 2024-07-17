@@ -16,6 +16,16 @@ body {
     justify-content: center;
     align-items: center;
   }
+  button {
+    background-color: black;
+    border: none;
+    color: aliceblue;
+    font-size: 1.2em;
+    font-family: "mina";
+    cursor:pointer; 
+
+
+  }
 
 #game-area-container{
     margin: 0%;
@@ -40,7 +50,7 @@ body {
     margin-right: 20px;
     margin-left: 0;
     border: solid black 2px;
-    background-image: url(./Assets/Images/test\ caracter\ picture.png);
+    background-image: url(./Assets/Images/Screen\ Shot\ 2024-07-16\ at\ 9.37.40\ PM.png);
     background-blend-mode: color;
     background-repeat: no-repeat; 
     background-position: center center; 
@@ -59,7 +69,7 @@ body {
     background-color: rgb(72, 72, 72);
     position: relative;
     margin-right: 70px;
-    /* background-image: url(./Assets/Images/Game-Room-2..webp); */
+    background-image: url(./Assets/Images/Game-Room-2..webp);
     clip-path: circle(100% at 50% 50%); /* Initial clip-path value */
     display: flex;
     justify-content: center;
@@ -78,31 +88,31 @@ body {
 
 
 #player {
-    width: 2.2em;
-    height: 2.2em;
-    border: solid rgb(255, 157, 157) 2px;
+    width: 3em;
+    height: 4.8em;
     position: absolute;  
-    background-color: rgb(120, 255, 212);
+    background-image: url(./Assets/Images/main.png);
     background-size: contain;
     background-repeat: no-repeat;
     left:0;
     top: 0;
     z-index: 2;
-    
-    
-    
+    /* border: solid white 2px;  */ 
 }
 
 .lantern {
     width: 20.2em;
     height: 20.2em;
     border-radius: 50%;
-    background: yellow;
+    /* background: yellow; */
     position: absolute;
     transform: translate(-50%, -50%);
     z-index: 2;
     opacity: 30%;
-    clip-path: circle(100% at 50% 50%); /* Initial clip-path value */
+    
+    
+    
+    
     
 
     
@@ -132,15 +142,15 @@ body {
 /* NURSES  */
 
 .nurses {
-    width: 2.2em;
-    height: 2.2em;
-    border: solid rgb(0, 0, 0) 2px;
+    width: 3em;
+    height: 4.8em;
     position: absolute;  
-    background-color: rgb(255, 11, 11);
+    /* background-color: rgb(255, 11, 11); */
+    background-image: url(./Assets/Images/nurse.png);
     background-size: contain;
     background-repeat: no-repeat;
-
-    
+    /* border: solid red 2px; */
+      
 }
 
 /* DOOR TO WIN */
@@ -148,12 +158,16 @@ body {
 
 
 .escape-door {
-    width: 2.2em;
-    height: 2.2em;
-
+    width: 2.5em;
+    height: 2.5em;
     background-color: rgb(255, 255, 255);
     position: absolute;
     display: flex;
+    background-image: url(./Assets/Images/elevator\ test.png);
+    background-size:250%;
+    background-repeat: no-repeat;
+    background-position: center;
+
 
     
 }
@@ -171,7 +185,10 @@ body {
     pointer-events: none; /* Allow interactions with elements below */
     z-index: 1; /* Ensure it is above other elements but below the player */
     mix-blend-mode: multiply; /* Blend the darkness with the background */
-    opacity: 90%;
+    opacity: 95%;
+    
+    
+    
     
     
 }
@@ -194,5 +211,70 @@ body {
     justify-content: center;
     align-items: center;
     display: none;
+
+}
+
+
+
+/* WIN SECTION */
+
+#win-section {
+    width:50vw ;
+    height:50vh ;
+    background-color: rgba(255, 0, 0, 0);
+    border: solid rgba(255, 255, 255, 0) 1px ;
+    z-index: 3;
+    font-size: 200px;
+    font-family:"Mina";
+    color: rgb(183, 11, 11);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+
+}
+
+
+/* START GAME SECTION */
+
+
+#start-game-section {
+    width: 60vw;
+    height: 60vh;
+    border: solid black 2px;
+    background-color: black;
+    z-index: 4;
+    display: flex;
+   flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family:"Mina";
+    display: none;
+}
+
+#game-title{
+    width: 60vw;
+    height:30vh;
+    color: aliceblue;
+    font-size: 7em ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family:"Mina";
+    text-decoration: line-through 3px;
+    text-transform: uppercase;
+}
+
+#menu-container {
+    width: 20%;
+    height:20% ;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    flex-direction: column;
+    font-family:"Mina";
+    margin-top: 30px;
 
 }
