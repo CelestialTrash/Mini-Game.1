@@ -22,13 +22,21 @@ body {
     color: aliceblue;
     font-size: 1.2em;
     font-family: "mina";
-    cursor:pointer; 
     transition: 300ms;
   }
 
   button:hover {
     font-size: 1.4em;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.7); /* Adjust the glow effect */
+  
 
+  }
+  h1 {
+    transition: 300ms;
+  }
+
+  h1:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 02); /* Adjust the glow effect */
   }
 
 #game-area-container{
@@ -162,8 +170,8 @@ body {
 
 
 .escape-door {
-    width: 4.5em;
-    height: 4.5em;
+    width: 3.9em;
+    height: 3.9em;
     background-color: rgb(255, 255, 255);
     position: absolute;
     display: flex;
@@ -254,8 +262,12 @@ body {
     justify-content: center;
     align-items: center;
     font-family:"Mina";
+    transition: 300ms;
+  
+
    /*  display: none; */
 }
+
 
 #game-title{
     width: 60vw;
@@ -285,7 +297,7 @@ body {
 
 #controls-section {
   
-
+text-align: center;
   color: rgb(51, 255, 0);
   display: none;
   

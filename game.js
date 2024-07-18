@@ -4,6 +4,7 @@ console.log("INDEX JS RUNNING");
 const game = {
   isGameover: false,
   isStarted: false,
+  
 
 };
 
@@ -15,8 +16,18 @@ const controlsSection = document.querySelector("#controls-section");
 const creditsButton = document.querySelector(".credits-button")
 const creditSection = document.querySelector("#credit-section")
 const backButton = document.querySelector(".back-button")
+const titleElement = document.querySelector("#game-title")
 
 let mainTheme = new Audio ("Assets/Sound/Test Subject Shadows_U.731.wav")
+let hasPlayedHoverSound = false;
+
+titleElement.addEventListener("mouseover", () => {
+  if (!hasPlayedHoverSound) {
+    let hoverSoundTitle = new Audio("Assets/Sound/TL_TFX_Atmosphere_OneShot_Seraphine.wav");
+    hoverSoundTitle.play();
+    hasPlayedHoverSound = true;
+  }
+});
 
 
 startGameButton.addEventListener("mouseover",() => {
