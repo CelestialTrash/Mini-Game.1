@@ -50,6 +50,8 @@ class Nurse {
         const angle = Math.atan2(dy, dx);
         this.positionX += Math.cos(angle) * this.velocity;
         this.positionY += Math.sin(angle) * this.velocity;
+        let nurseScream2 = new Audio ("Assets/Sound/NURSE SCREAM 3.mp3")
+        nurseScream2.play()
     }
 
     defaultMove() {
@@ -68,6 +70,7 @@ class Nurse {
         const distanceY = centerY - (this.positionY + this.element.offsetHeight / 2);
         const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
         return distance < radius;
+        
     }
 }
 

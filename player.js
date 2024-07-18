@@ -3,6 +3,7 @@ const livesElement = document.querySelector("#live-section-container")
 const darkOverlay = document.querySelector("#dark-overlay");
 const gameOverElement = document.querySelector("#game-over-section")
 const winElement = document.querySelector("#win-section")
+
 const player = {
     positionX: 0,
     positionY: 0,
@@ -61,6 +62,9 @@ const player = {
         if (!this.directions.includes(direction)) {
             this.directions.push(direction);
         }
+        let footStep1 = new Audio ("Assets/Sound/FOOT STEP 1.mp3")
+        footStep1.play()
+        footStep1.volume = 0.9;
         this.move();
     },
 
@@ -111,6 +115,11 @@ const player = {
                 playerBottomEdge > nurseTopEdge
             ) {
                 console.log("Collision detected");
+                let playerHit = new Audio ("Assets/Sound/PLAYER HIT.mp3")
+                let nurseScream1 = new Audio ("Assets/Sound/NURSE SCREAM 2.mp3")
+                playerHit.play()
+                nurseScream1.play()
+                nurseScream1.volume = 0.35;
                 shakeGameArea();
                 this.lives --;
                 livesElement.textContent = this.lives;
@@ -120,6 +129,9 @@ const player = {
                     game.isGameover = true;
                     this.endGame();
                     gameOverElement.style.display = "flex";  
+                    let gameOverSound = new Audio ("Assets/Sound/YOU DIED SOUND.mp3")
+                    gameOverSound.play()
+
                 }
 
 
@@ -150,6 +162,9 @@ const player = {
             ) {
                 console.log("You Win!!");
                 this.endGame();
+                let ElevatorSound = new Audio ("Assets/Sound/ELEVATOR.mp3")
+                ElevatorSound.play();
+
                 winElement.style.display = "flex";
 
 
@@ -172,6 +187,8 @@ const player = {
 
         if (this.lightOn === false) {
             this.lightOn = true;
+            let flashLightSound = new Audio ("Assets/Sound/flashlight.mp3")
+            flashLightSound.play()
             console.log("The LIGHT IS ON!!");
             this.lightElement = document.createElement("div");
             this.lightElement.className = "lantern";
@@ -185,6 +202,7 @@ const player = {
         else {
             this.lightOn = false;
             this.lightElement.remove();
+          
         }
     },
 

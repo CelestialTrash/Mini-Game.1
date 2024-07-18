@@ -1,47 +1,67 @@
 console.log("INDEX JS RUNNING");
-//LISTEN WHEN YOU PRESS THE KEY
 
+// Variables to store game state
 const game = {
   isGameover: false,
-}
+  isStarted: false,
+
+};
+
+// Get the start game section and button
+const startGameElement = document.querySelector("#start-game-section");
+const startGameButton = document.querySelector(".start-game-button");
+const controlsButton = document.querySelector(".controls-button");
+const controlsSection = document.querySelector("#controls-section");
+const creditsButton = document.querySelector(".credits-button")
+const creditSection = document.querySelector("#credit-section")
+
+creditsButton.addEventListener("click", () => {
+  creditSection.style.display = "flex";
+  let mainTheme = new Audio ("Assets/Sound/Test Subject Shadows_U.731.wav")
+  mainTheme.play()
+});
 
 
+controlsButton.addEventListener("click", () => {
+  controlsSection.style.display = "flex";
+
+});
 
 
+// Event listener for the start game button
+startGameButton.addEventListener("click", () => {
+  if (!game.isStarted) {
+    startGameElement.style.display = "none";
 
-const keyDownEvent = document.addEventListener("keydown", (event) => {
-  if (!game.isGameover) {
-    if (event.key === " ") {
-      player.turnLightOn();
-    }
-    
-    
-    
-    player.setDirection(event.key);
-    
-  }
-})
-
-// LISTEN WHEN YOU RELEASE THE KEY
-const keyUpEvent = document.addEventListener("keyup", (event) => {
-  if (!game.isGameover) {
-    player.unSetDirections(event.key);
-    
-    
-    
+    startGame();
+    let startButton = new Audio ("Assets/Sound/ESM_GFTL_fx_transition_one_shots_glass_movement_energy_magic_short.wav")
+    startButton.play()
   }
 });
 
+const keyDownEvent = (event) => {
+  if (game.isStarted && !game.isGameover) {
+    if (event.key === " ") {
+      player.turnLightOn();
+    }
+    player.setDirection(event.key);
+  }
+};
+
+const keyUpEvent = (event) => {
+  if (game.isStarted && !game.isGameover) {
+    player.unSetDirections(event.key);
+  }
+};
+
+document.addEventListener("keydown", keyDownEvent);
+document.addEventListener("keyup", keyUpEvent);
 
 const gameArea = document.querySelector("#game-area");
 console.table({
   gameAreaHeight: gameArea.offsetHeight,
   gameAreaWidth: gameArea.offsetWidth,
 });
-
-
-
-
 
 function shakeGameArea() {
   gameArea.style.animation = "shake 300ms";
@@ -50,30 +70,30 @@ function shakeGameArea() {
   }, 300);
 }
 
-
-
 function startGame() {
   const numberOfNurses = 20;
-  const nurseVelocity = 15;
-  
+  const nurseVelocity = 10;
+  let backgroundSound = new Audio('Assets/Sound/ESM_Horror_Game_Ambience_Loop_Deadly_Fog_Full_Cemetary_Wind_Howl_Creepy_Scary_Soundscape.wav');
+  backgroundSound.loop = true; // Enable looping
+  backgroundSound.play();
+
   for (let i = 0; i < numberOfNurses; i++) {
     const nurse = new Nurse(nurseVelocity);
-    nurses.push(nurse)
-  };
-  
+    nurses.push(nurse);
+  }
+
+  const door = new Door();
+  doorArray.push(door);
+
+  game.isStarted = true;
 }
-
-
-startGame();
-
-
-const doorArray = []
+const doorArray = [];
 
 class Door {
   constructor() {
     this.createDoorElement();
-    this.positionX = gameArea.offsetWidth - this.element.offsetWidth -10; 
-    this.positionY = gameArea.offsetHeight - this.element.offsetHeight - 40; 
+    this.positionX = gameArea.offsetWidth - this.element.offsetWidth - 10;
+    this.positionY = gameArea.offsetHeight - this.element.offsetHeight - 40;
     this.updateElementPosition();
     doorArray.push(this);
   }
@@ -90,9 +110,6 @@ class Door {
     this.element.style.top = `${this.positionY}px`;
   }
 }
-
-// Create the door when starting the game
-const door = new Door();
 
 
 

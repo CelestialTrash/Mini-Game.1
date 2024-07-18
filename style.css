@@ -158,8 +158,8 @@ body {
 
 
 .escape-door {
-    width: 2.5em;
-    height: 2.5em;
+    width: 4.5em;
+    height: 4.5em;
     background-color: rgb(255, 255, 255);
     position: absolute;
     display: flex;
@@ -250,7 +250,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family:"Mina";
-    display: none;
+   /*  display: none; */
 }
 
 #game-title{
@@ -277,4 +277,32 @@ body {
     font-family:"Mina";
     margin-top: 30px;
 
+}
+
+#controls-section {
+  
+
+  color: rgb(51, 255, 0);
+  display: none;
+  
+  
+  
+}
+
+
+#credit-section {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(20, 17, 17);
+  z-index: 6;
+  color: aliceblue;
+  display: flex;
+ flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family:"Mina";
+  text-align: center;
+  display: none;
+  position: absolute;
+  
 }
