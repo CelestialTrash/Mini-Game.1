@@ -23,7 +23,11 @@ body {
     font-size: 1.2em;
     font-family: "mina";
     cursor:pointer; 
+    transition: 300ms;
+  }
 
+  button:hover {
+    font-size: 1.4em;
 
   }
 
